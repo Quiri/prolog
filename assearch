@@ -1,0 +1,15 @@
+as_find([[S,D]|_], S, D).
+as_find([_|Rest], S, D) :- as_find(Rest, S, D).
+
+as_find_all(L, S, D) :- findall(X0, as_find(L, S, X0), D).
+
+as_search(AL) :-
+	repeat,
+	read(S),
+	find_write(AL,S), !.
+
+find_write(AS,S) :- S = genug, !, true.
+find_write(AL, S) :- as_find_all(AL, S, X),
+	write(X),
+	fail.
+

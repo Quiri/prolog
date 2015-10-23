@@ -1,0 +1,9 @@
+insertsort(L1,L2) :-
+  ins(L1,[],L2).
+ 
+ins([],L,L).
+ins([H|T],L1,L) :- insert(L1,H,L2), ins(T,L2,L).
+ 
+insert([],X,[X]).
+insert([H|T],X,[X,H|T]) :-  X =< H, !.
+insert([H|T],X,[H|T2]) :- insert(T,X,T2).

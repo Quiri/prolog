@@ -1,0 +1,2 @@
+islist([]).
+islist([A]) :- islist(A).
